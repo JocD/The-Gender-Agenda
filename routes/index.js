@@ -7,8 +7,12 @@ var url = 'http://' + server + '/wordpress/dev/wp-json/wp/v2/';
 /* GET home page. */
 
 router.use(function (req, res, next) {
-    get('categories?exclude=1')
+    get('categories?exclude=1,51')
         .then(function (val) {
+            val.unshift({
+                name: 'Podcasts',
+                id: 51
+            });
             res.categories = val;
             next();
         });
