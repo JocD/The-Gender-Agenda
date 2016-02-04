@@ -2,12 +2,20 @@ var express = require('express');
 var router = express.Router();
 var request = require('request-promise');
 
-var url = 'http://www.jacquesdukes.com';
+var server = 'www.jacquesdukes.com';
+var url = 'http://' + server + '/wordpress/dev/wp-json/wp/v2/';
 /* GET home page. */
 
+router.use(function (req, res, next) {
+    get('categories?exclude=1')
+        .then(function (val) {
+            res.categories = val;
+            next();
+        });
+});
+
 router.get('/', function (req, res, next) {
-    var postURL = '/wordpress/dev/wp-json/wp/v2/posts?per_page=5';
-    var categoryURL = '/wordpress/dev/wp-json/wp/v2/categories';
+    var postURL = 'posts?per_page=5';
     var query = req.query.category;
     var activeTab = -1;
 
@@ -15,24 +23,24 @@ router.get('/', function (req, res, next) {
         postURL += '&filter[category_name]=' + query;
     }
 
-    var postData = get(postURL);
-    var categoryData = get(categoryURL);
-
-    Promise.all([postData, categoryData])
+    get(postURL)
         .then(function (vals) {
-            var posts = vals[0];
-            var categories = vals[1];
-            for (var i = 0; i < vals[1].length; i++) {
-                if (vals[1][i].name === query) {
+            var posts = vals;
+            for (var i = 0; i < res.categories.length; i++) {
+                if (res.categories[i].name === query) {
                     activeTab = i;
                 }
+            }
+
+            for (var i = 0; i < posts.length; i++) {
+                posts[i].excerpt.rendered = posts[i].excerpt.rendered.replace(/\<(?=a).*(?:a\>)/g, '');
             }
 
             res.render('index', {
                 title: 'The Gender Agenda',
                 logo: 'img/logo.jpg',
                 posts: posts,
-                categories: categories,
+                categories: res.categories,
                 activeTab: activeTab,
                 homepage: true
             });
@@ -40,73 +48,43 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/about', function (req, res, next) {
-    var categoryURL = '/wordpress/dev/wp-json/wp/v2/categories';
-    var categoryData = get(categoryURL);
     var activeTab = 6;
-
-    Promise.all([categoryData])
-        .then(function (vals) {
-            var categories = vals[0];
-            res.render('about', {
-                tagline: "The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond. We cover topical issues relating to health,family, career, politics, religion and cultural life from a gender perspective.",
-                title: 'Our Story',
-                categories: categories,
-                activeTab: activeTab,
-                static: true
-            });
-        });
+    res.render('about', {
+        tagline: "The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond. We cover topical issues relating to health,family, career, politics, religion and cultural life from a gender perspective.",
+        title: 'Our Story',
+        categories: res.categories,
+        activeTab: activeTab,
+    });
 });
 
 router.get('/about/hosts', function (req, res, next) {
-    var categoryURL = '/wordpress/dev/wp-json/wp/v2/categories';
-    var categoryData = get(categoryURL);
     var activeTab = 6;
-
-    Promise.all([categoryData])
-        .then(function (vals) {
-            var categories = vals[0];
-            res.render('hosts', {
-                title: 'People',
-                categories: categories,
-                activeTab: activeTab,
-                static: true
-            });
-        });
+    res.render('hosts', {
+        title: 'People',
+        categories: res.categories,
+        activeTab: activeTab,
+    });
 });
 
 router.get('/about/faq', function (req, res, next) {
-    var categoryURL = '/wordpress/dev/wp-json/wp/v2/categories';
-    var categoryData = get(categoryURL);
     var activeTab = 6;
-
-    Promise.all([categoryData])
-        .then(function (vals) {
-            var categories = vals[0];
-            res.render('faq', {
-                title: 'FAQ',
-                categories: categories,
-                activeTab: activeTab,
-                static: true
-            });
-        });
+    res.render('faq', {
+        title: 'FAQ',
+        categories: res.categories,
+        activeTab: activeTab,
+        static: true
+    });
 });
 
 router.get('/:slug', function (req, res, next) {
-    var postURL = '/wordpress/dev/wp-json/wp/v2/posts?filter[name]=' + req.params.slug;
-    var categoryURL = '/wordpress/dev/wp-json/wp/v2/categories';
-
-    var postData = get(postURL);
-    var categoryData = get(categoryURL);
-
-    Promise.all([postData, categoryData])
+    var postURL = 'posts?slug=' + req.params.slug;
+    get(postURL)
         .then(function (vals) {
-            var posts = vals[0];
-            var post = posts[0];
-            var categories = vals[1];
+            var post = vals[0];
             var featured_img = post.better_featured_image ? post.better_featured_image.source_url : null;
-            var postCategoriesURL = '/wordpress/dev/wp-json/wp/v2/posts/' + post.id + '/categories';
-            var postTagsURL = '/wordpress/dev/wp-json/wp/v2/posts/' + post.id + '/tags';
-            var postAuthorURL = '/wordpress/dev/wp-json/wp/v2/users/' + post.author;
+            var postCategoriesURL = 'categories?post=' + post.id;
+            var postTagsURL = 'tags?post=' + post.id;
+            var postAuthorURL = 'users/' + post.author;
 
             var getPostCategories = get(postCategoriesURL);
             var getPostTags = get(postTagsURL);
@@ -122,7 +100,7 @@ router.get('/:slug', function (req, res, next) {
                         content: post.content.rendered,
                         img: featured_img,
                         post: post,
-                        categories: categories,
+                        categories: res.categories,
                         author: postAuthor,
                         postCategories: postCategories,
                         postTags: postTags
