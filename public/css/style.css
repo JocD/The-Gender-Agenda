@@ -1,0 +1,217 @@
+body {
+    padding: 0px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.banner a {
+    color: #ffffff;
+}
+
+.banner a:hover, .ui.menu .dropdown.item .menu {
+    color: #ffffff;
+}
+
+.ui.menu .dropdown.item .menu a {
+    color: #dddddd;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+.ui.menu .dropdown.item .menu a:hover {
+    color: #ffffff;
+}
+
+.post p:not(.label) {
+    padding-left: 0px !important;
+    text-align: left;
+}
+
+.no.padding {
+    padding: 0 !important;
+}
+
+.no.margin {
+    margin: 0 !important;
+}
+
+.no.overflow {
+    overflow: hidden;
+}
+
+.masthead > .header {
+    background: #bc0030;
+}
+
+.ui.menu {
+    background: #bc0030;
+}
+
+.ui.menu .item {
+    flex: 1 1 auto;
+    color: #dddddd;
+}
+
+.ui.menu .active.item {
+    flex: 1 1 auto;
+    color: #dddddd;
+}
+
+.ui.menu .item:hover {
+    color: #ffffff !important;
+}
+
+.ui.stripe {
+    padding-top: 14px;
+}
+
+.icon.circular.soundcloud-padding {
+    padding: .5em .35em !important;
+}
+
+.banner {
+    background: url('../img/gender-agenda-bg.jpg');
+    height: 63vh;
+    padding: 0;
+    margin: 0;
+}
+
+.banner > div {
+    height: 100% !important;
+}
+
+.sidebar.menu .logo > img {
+    position: relative;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1em;
+}
+
+.post.title {
+    color: #bc0030;
+}
+
+.post.author {
+    color: white;
+    text-align: right;
+    font-size: .75em;
+}
+
+.post.tag {
+    font-size: .7em;
+}
+
+blockquote {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    width: 100%;
+    margin: 0.25em 0;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
+    background: #ececec;
+}
+
+blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    color: #7a7a7a;
+}
+
+blockquote:after {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    right: -10px;
+    bottom: -20px;
+    color: #7a7a7a;
+    transform: rotate(180deg);
+}
+
+blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+blockquote cite:before {
+    content: "\2014 \2009";
+}
+
+.post blockquote, .post img {
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+.ui.red.ribbon.label, .ui.red.tag.label, .ui.red.button {
+    background: #bc0030 !important;
+    border-color: #590A0A !important;
+}
+
+.ui.tag.label {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.ui.header > .image, .ui.header > img {
+    width: 720px;
+}
+
+.ui.header{
+   color: #bc0030;
+}
+
+.ui.header.white {
+    color: white;
+}
+
+.featured-placeholder {
+    height: 128px !important;
+    width: auto !important;
+}
+
+.manual-center {
+    position: relative;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ui.items > .item > .image:not(.ui) {
+    width: 175px !important;
+    height: 175px !important;
+    background: url('../img/gender-agenda-bg.jpg')
+}
+
+.ui.menu .dropdown.item .menu {
+    background: #BC0030;
+    border: none !important;
+}
+
+.ui.grid.hosts > .row {
+    padding-bottom: 3em;
+}
+
+@media only screen and (max-width: 767px) {
+    .ui.items>.item>.image.fluid, .ui.items>.item>.image>img.fluid {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+}
