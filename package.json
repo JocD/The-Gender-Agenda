@@ -16,6 +16,8 @@
     "gulp-uglify": "^1.5.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "nodemailer": "^2.1.0",
+    "nodemailer-mailgun-transport": "^1.0.1",
     "request-promise": "^2.0.0",
     "rtlcss": "^1.7.2",
     "semantic-ui": "^2.1.8",
