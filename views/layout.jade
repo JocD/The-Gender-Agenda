@@ -39,7 +39,6 @@ html
                 a(href="/about", class="item") Our Story
                 a(href="/about/hosts", class="item") People
                 a(href="/about/faq", class="item") FAQ
-
         div(class="pusher")
             div(class="ui vertical basic masthead center aligned segment no padding")
                 div(class="ui header no margin")
@@ -77,9 +76,13 @@ html
                             div(class="row", style=post.better_featured_image === null ? "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))" : "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(#{post.better_featured_image.source_url}) center center no-repeat")
                                 div(class="eight wide middle aligned left aligned centered column")
                                     for category in postCategories
-                                        p(class="post category ui red ribbon label") #{category.name}
+                                        if category.name !== 'Podcasts'
+                                            p(class="post category ui red ribbon label") #{category.name}
                                     h1(class="ui header post white title no margin") #{title}
                                     p(class="post author") #{author.name}
+                                if podcast !== undefined
+                                    div(class="sixteen wide bottom aligned centered column no padding", id="soundcloud-embed")
+                                        iframe(width="100%", height="175px", scrolling="no", frameborder="no", src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/214077316&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_artwork=false&amp;show_playcount=false')
                     else
                         div(class="ui stackable one column padded grid banner")
                             div(class="centered row", href="/")

@@ -4,6 +4,9 @@ var request = require('request-promise');
 
 var server = 'www.jacquesdukes.com';
 var url = 'http://' + server + '/wordpress/dev/wp-json/wp/v2/';
+
+var appPassword = new Buffer('@Jacques:2B53 mBHn CcHt zkXv').toString('base64');
+
 /* GET home page. */
 
 router.use(function (req, res, next) {
@@ -89,16 +92,19 @@ router.get('/:slug', function (req, res, next) {
             var postCategoriesURL = 'categories?post=' + post.id;
             var postTagsURL = 'tags?post=' + post.id;
             var postAuthorURL = 'users/' + post.author;
+            var postMetaURL = 'posts/' + post.id + '/meta';
 
             var getPostCategories = get(postCategoriesURL);
             var getPostTags = get(postTagsURL);
             var getPostAuthor = get(postAuthorURL);
+            var getPostMeta =get(postMetaURL);
 
-            Promise.all([getPostCategories, getPostAuthor, getPostTags])
+            Promise.all([getPostCategories, getPostAuthor, getPostTags, getPostMeta])
                 .then(function (vals) {
                     var postCategories = vals[0];
                     var postAuthor = vals[1];
                     var postTags = vals[2];
+                    var postMeta = vals[3];
                     res.render('post', {
                         title: post.title.rendered,
                         content: post.content.rendered,
@@ -107,7 +113,8 @@ router.get('/:slug', function (req, res, next) {
                         categories: res.categories,
                         author: postAuthor,
                         postCategories: postCategories,
-                        postTags: postTags
+                        postTags: postTags,
+                        podcast: postMeta[0]
                     });
                 });
         });
@@ -117,7 +124,10 @@ router.get('/:slug', function (req, res, next) {
 function get(path) {
     options = {
         uri: url + path,
-        json: true
+        json: true,
+        headers: {
+            Authorization: 'Basic ' + appPassword
+        }
     };
 
     return request(options)

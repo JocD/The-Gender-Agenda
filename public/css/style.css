@@ -82,6 +82,12 @@ a {
 
 .banner > div {
     height: 100% !important;
+    padding: 0 !important;
+}
+
+#soundcloud-embed{
+    height: 175px;
+    background-color: #f2f2f2;
 }
 
 .sidebar.menu .logo > img {
