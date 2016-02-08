@@ -214,6 +214,10 @@ blockquote cite:before {
     padding-bottom: 3em;
 }
 
+.hidden {
+    display: none;
+}
+
 @media only screen and (max-width: 767px) {
     .ui.items>.item>.image.fluid, .ui.items>.item>.image>img.fluid {
         width: 100% !important;

@@ -23,11 +23,17 @@ router.post('/', function (req, res, next) {
             text: formData.message
         })
         .then(function (info) {
-            res.status(200).end();
+            res.status(200).json({
+                status: 200,
+                result: 'success'
+            });
         })
         .catch(function (err) {
             console.log("Error sending email: " + err);
-            res.status(500).end();
+            res.status(500).json({
+                status: 500,
+                result: 'failure'
+            });
         });
 });
 
