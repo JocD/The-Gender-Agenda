@@ -1,0 +1,23 @@
+if homepage === true
+    div(class="ui stackable one column padded grid banner")
+        div(class="centered eight wide row", href="/")
+            a(class="middle aligned column")
+                h1(class="ui header white")
+                    img(class="ui centered image no margin", src="/img/logo.png", width="720", alt="The Gender Agenda")
+else if post
+    div(class="ui stackable one column centered padded grid banner overflow")
+        div(class="row", style=post.better_featured_image === null ? "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))" : "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(#{post.better_featured_image.source_url}) center center no-repeat")
+            div(class="eight wide middle aligned left aligned centered column")
+                for category in postCategories
+                    if category.name !== 'Podcasts'
+                        p(class="post category ui red ribbon label") #{category.name}
+                h1(class="ui header post white title no margin") #{title}
+                p(class="post author") #{author.name}
+            if podcast !== undefined
+                div(class="sixteen wide bottom aligned centered column no padding", id="soundcloud-embed")
+                    iframe(width="100%", height="175px", scrolling="no", frameborder="no", src='https://w.soundcloud.com/player/?url=#{podcast.value}&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_artwork=false&amp;show_playcount=false')
+else
+    div(class="ui stackable one column padded grid banner")
+        div(class="centered row", href="/")
+            a(class="eight wide middle aligned column")
+                h1(class="ui huge header white no margin") #{title}

@@ -5,57 +5,11 @@ block content
         div(class="ui stackable divided centered two column grid")
             //Posts
             div(class="eight wide column")
-                div(class="ui divided items")
-                    for post in posts
-                        a(class="item", href="/#{post.slug}")
-                            div(class="image")
-                                if post.better_featured_image
-                                    img(class="ui fluid image", src="#{post.better_featured_image.media_details.sizes.thumbnail.source_url}")
-                                else
-                                    img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
-                            div(class="content")
-                                div(class="header")
-                                    h3(class="ui header") !{post.title.rendered}
-                                div(class="meta")
-                                div(class="description") !{post.excerpt.rendered}
-                                div(class="extra")
-                                    button(class="ui right floated red button") Read More
+                include ./site-components/post-list
             //Subscribe and Social
             div(class="four wide column")
                 div(class="ui vertically divided grid")
                     div(class="centered center aligned one column row")
-                        h2(class="ui header") SUBSCRIBE
-                        div(class="grid")
-                            div(class="centered center aligned row")
-                                a(href="https://itunes.apple.com/au/podcast/the-gender-agenda/id1025417924?mt=2")
-                                    i(class="circular big apple icon")
-                                a(href="https://soundcloud.com/thegenderagenda/sets/the-gender-agenda-with-dalit")
-                                    i(class="circular big soundcloud icon soundcloud-padding")
-                                a(href="http://www.stitcher.com/podcast/dalit-kaplan/the-gender-agenda?refid=stpr")
-                                    i(class="circular big barcode icon")
-                                a(href="http://feeds.soundcloud.com/users/soundcloud:users:28040506/sounds.rss")
-                                    i(class="circular big rss icon")
+                        include ./site-components/subscribe
                     div(class="centered center aligned one column row")
-                        h2(class="ui header") CONTACT
-                        div(class="ui grid")
-                            div(class="centered center aligned row")
-                                form(class="ui form", id="contact-form", action="/contact", method="post")
-                                    div(class="one fields")
-                                        div(class="sixteen wide field")
-                                            label(for="name") Name
-                                            input(type="text", id="name", name="name", placeholder="Name")
-                                    div(class="one fields")
-                                        div(class="sixteen wide field")
-                                            label(for="email") Email
-                                            input(type="text", id="email", name="email", placeholder="Email")
-                                    div(class="one fields")
-                                        div(class="sixteen wide field")
-                                            label(for="subject") subject
-                                            input(type="text", id="subject", name="subject", placeholder="Subject")
-                                    div(class="one fields")
-                                        div(class="sixteen wide field")
-                                            label(for="message") Message
-                                            textarea(id="message", name="message", placeholder="Enter Your Message Here", form="contact-form")
-                                    div(class="one fields")
-                                        div(class="sixteen wide field")
-                                            input(class="ui right floated red button", type="submit", id="submit", text="submit")
+                        include ./site-components/contact
