@@ -225,3 +225,9 @@ blockquote cite:before {
         display: block !important;
     }
 }
+
+
+/*9/2/2016*/
+.ui.item.menu .item{
+    padding: 1em !important;
+}

@@ -24,6 +24,7 @@ $(document)
         $('.ui.dropdown')
             .dropdown();
 
+        // validate contact form
         $('.ui.form')
             .form({
                 fields: {
@@ -66,7 +67,7 @@ $(document)
                         $('#contact-form').hide();
                         $('.contact.response').transition('fade in');
                         $('.ui.dimmer').removeClass('active');
-                    });
+                    });0
             }
             event.preventDefault();
         });
