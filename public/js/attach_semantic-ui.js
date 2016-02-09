@@ -16,13 +16,13 @@ $(document)
         }
 
 
-        // create sidebar and attach to menu open
+        /* create sidebar and attach to menu open
         $('.ui.sidebar')
-            .sidebar('attach events', '.toc.item');
+            .sidebar('attach events', '.toc.item');*/
 
-        // activate Semantic-UI dropdown menus
+        /*activate Semantic-UI dropdown menus
         $('.ui.dropdown')
-            .dropdown();
+            .dropdown();*/
 
         // validate contact form
         $('.ui.form')

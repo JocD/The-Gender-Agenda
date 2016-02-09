@@ -231,3 +231,7 @@ blockquote cite:before {
 .ui.item.menu .item{
     padding: 1em !important;
 }
+
+.ui.menu.sharp.border {
+    border-radius: 0 !important;
+}

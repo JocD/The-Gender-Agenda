@@ -11,10 +11,6 @@ var Sidebar = React.createClass({
                 categories: data
             });
         }.bind(this));
-
-        // create sidebar and attach to menu open
-        $('.ui.sidebar')
-            .sidebar('attach events', '.toc.item');
     },
 
     componentWillUnmount: function () {
@@ -25,10 +21,16 @@ var Sidebar = React.createClass({
         var categories = this.state.categories;
         var categoryHTML = [];
         for (var i = 0; i < categories.length; i++) {
-            if (categories[i].id !== 1) {
-                var categoryName = categories[i].name;
+            var category = categories[i];
+            if (category.id !== 1) {
+                var categoryName = category.name;
                 var link = "/?category=" + categoryName;
-                categoryHTML.push(<a href={link} className="item">{categoryName}</a>);
+                if(category.id === 51){
+                    categoryHTML.unshift(<a href={link} className="item">{categoryName}</a>);
+                }
+                else {
+                    categoryHTML.push(<a href={link} className="item">{categoryName}</a>);
+                }
             }
         }
         return (
