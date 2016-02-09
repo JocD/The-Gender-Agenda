@@ -11,7 +11,7 @@ html
         link(rel='stylesheet', href='/css/style.css')
     body(class="pushable")
         div(id="floating-header-bar")
-        include ./site-components/sidebar
+        div(id="sidebar", class="ui vertical inverted sidebar menu right")
         div(class="pusher")
             div(class="ui vertical basic masthead center aligned segment no padding")
                 include ./site-components/header
@@ -28,3 +28,4 @@ html
         script(src="/js/react-dom.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js")
         script(type="text/babel", src="/react/components/floating-header-bar.js")
+        script(type="text/babel", src="/react/components/sidebar.js")

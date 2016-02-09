@@ -1,4 +1,4 @@
-var FloatingHeaderBar = React.createClass({
+var Sidebar = React.createClass({
     getInitialState: function () {
         return {
             categories: []
@@ -11,6 +11,10 @@ var FloatingHeaderBar = React.createClass({
                 categories: data
             });
         }.bind(this));
+
+        // create sidebar and attach to menu open
+        $('.ui.sidebar')
+            .sidebar('attach events', '.toc.item');
     },
 
     componentWillUnmount: function () {
@@ -28,22 +32,22 @@ var FloatingHeaderBar = React.createClass({
             }
         }
         return (
-            <div className="ui small top fixed eight item menu transition hidden computer tablet only">
-                <a href="/" className="item">
-                    <img className="ui image" src="img/logo-icon.png" height="32" alt="The Gender Agenda"/>
+            <div>
+                <a href="/" className="logo">
+                    <img src="img/logo-icon.png" height="100" alt="The Gender Agenda"/>
                 </a>
                 {categoryHTML}
-                <div className="ui dropdown item">
+                <div className="item">
                     About
-                    <i className="dropdown icon">
-                    </i>
-                    <div className="menu">
-                        <div className="item">
-                            <a href="/about">
-                                Our Story
-                            </a>
-                        </div>
-                    </div>
+                    <a className="item" href="/about">
+                        Our Story
+                    </a>
+                    <a className="item" href="/about/hosts">
+                        People
+                    </a>
+                    <a className="item" href="/about/faq">
+                        FAQ
+                    </a>
                 </div>
             </div>
         );
@@ -51,6 +55,6 @@ var FloatingHeaderBar = React.createClass({
 });
 
 ReactDOM.render(
-    <FloatingHeaderBar
-        source="https://www.jacquesdukes.com/wordpress/dev/wp-json/wp/v2/categories"/>, document.getElementById("floating-header-bar")
+    <Sidebar
+        source="https://www.jacquesdukes.com/wordpress/dev/wp-json/wp/v2/categories"/>, document.getElementById("sidebar")
 );
