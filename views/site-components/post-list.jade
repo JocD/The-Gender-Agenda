@@ -1,15 +1,15 @@
-div(class="ui divided items", id="post-list")
-    for post in posts
-        a(class="item", href="/#{post.slug}")
-            div(class="image")
-                if post.better_featured_image
-                    img(class="ui fluid image", src="#{post.better_featured_image.media_details.sizes.thumbnail.source_url}")
-                else
-                    img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
-            div(class="content")
-                div(class="header")
-                    h3(class="ui header") !{post.title.rendered}
-                div(class="meta")
-                div(class="description") !{post.excerpt.rendered}
-                div(class="extra")
-                    button(class="ui right floated red button") Read More
+for post in posts
+    a(class="item", href="/#{post.slug}")
+        div(class="image")
+            if post.better_featured_image
+                img(class="ui fluid image", src="#{post.better_featured_image.media_details.sizes.thumbnail.source_url}")
+            else
+                img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
+        div(class="content")
+            div(class="header")
+                h3(class="ui header") !{post.title.rendered}
+            div(class="meta")
+                span(class="publish-date") #{post.date}
+            div(class="description") !{post.excerpt.rendered}
+            div(class="extra")
+                button(class="ui right floated red button") Read More

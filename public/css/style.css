@@ -225,3 +225,7 @@ blockquote cite:before {
         display: block !important;
     }
 }
+
+#load-posts{
+    position: relative;
+}

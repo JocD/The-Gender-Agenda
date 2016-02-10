@@ -1,3 +1,5 @@
+var postPage = 2;
+var postUrl = "http://localhost:3000/posts?per_page=5&page=";
 $(document)
     .ready(function () {
 
@@ -47,14 +49,13 @@ $(document)
                 };
 
                 var contact = Promise.resolve($.ajax({
-                    type: 'POST',
-                    url: '/contact',
-                    data: formData,
-                    dataType: 'json',
-                    encode: true
-                }));
-
-                contact.then(function (data) {
+                        type: 'POST',
+                        url: '/contact',
+                        data: formData,
+                        dataType: 'json',
+                        encode: true
+                    }))
+                    .then(function (data) {
                         $('.submit-success').show();
                         $('.submit-failure').hide();
                     })
@@ -70,4 +71,44 @@ $(document)
             }
             event.preventDefault();
         });
+
+        $("#load-posts").click(function () {
+            var loadPostbtn = $("#load-posts");
+            var dimmer = $("#load-posts > .dimmer");
+            dimmer.addClass("active");
+            var posts = Promise.resolve($.ajax({
+                    type: 'GET',
+                    url: postUrl + postPage,
+                    dataType: 'html',
+                    encode: true
+                }))
+                .then(function (data) {
+
+                    if (data !== "") {
+                        loadPostbtn.before(data);
+                        postPage++;
+                    }
+
+                    else {
+                        loadPostbtn.text('No More Posts');
+                        loadPostbtn.addClass("disabled");
+                    }
+                    dimmer.removeClass("active");
+                    $('.ui.sticky')
+                        .sticky('refresh')
+                    ;
+                })
+                .catch(function (err) {
+                    loadPostbtn.text("Can't load posts right now");
+                    loadPostbtn.addClass("disabled");
+                    dimmer.removeClass("active");
+                })
+        })
+
+        $('.ui.sticky')
+            .sticky({
+                context: '#content',
+                offset: 75,
+            })
+        ;
     });

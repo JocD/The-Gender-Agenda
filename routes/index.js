@@ -39,9 +39,7 @@ router.get('/', function (req, res, next) {
                 }
             }
 
-            for (var i = 0; i < posts.length; i++) {
-                posts[i].excerpt.rendered = posts[i].excerpt.rendered.replace(/\<(?=a).*(?:a\>)/g, '');
-            }
+            posts = clean(posts);
 
             res.render('index', {
                 title: 'The Gender Agenda',
@@ -50,6 +48,33 @@ router.get('/', function (req, res, next) {
                 categories: res.categories,
                 activeTab: activeTab,
                 homepage: true
+            });
+        });
+});
+
+router.get('/posts', function (req, res, next) {
+    var postURL = 'posts?per_page=5';
+    var query = req.query.category;
+    var page = req.query.page;
+
+    if (query) {
+        postURL += '&filter[category_name]=' + query;
+    }
+
+    if (page) {
+        postURL += '&page=' + page;
+    }
+
+    get(postURL)
+        .then(function (vals) {
+            var posts = vals;
+
+            posts = clean(posts);
+
+            res.render('site-components/post-list', {
+                title: 'The Gender Agenda',
+                logo: 'img/logo.jpg',
+                posts: posts
             });
         });
 });
@@ -135,6 +160,15 @@ function get(path) {
             return val;
         })
         .catch('Error grabbing post data from ' + url + path);
+}
+
+function clean(posts){
+    for (var i = 0; i < posts.length; i++) {
+        var post = posts[i];
+        post.excerpt.rendered = post.excerpt.rendered.replace(/\<(?=a).*(?:a\>)/g, '');
+        post.date = new Date(post.date).toLocaleDateString();
+    }
+    return posts;
 }
 
 module.exports = router;

@@ -2,14 +2,19 @@ extends layout
 
 block content
     div(class="ui container")
-        div(class="ui stackable divided centered two column grid")
+        div(class="ui stackable divided centered two column relaxed grid")
             //Posts
-            div(class="eight wide column")
-                include ./site-components/post-list
+            div(class="eight wide computer twelve wide tablet column", id="content")
+                div(class="ui divided items", id="post-list")
+                    include ./site-components/post-list
+                    button(id="load-posts", class="ui left floated red button") See More Posts
+                        div(class="ui inverted dimmer")
+                            div(class="ui loader")
             //Subscribe and Social
             div(class="four wide column")
-                div(class="ui vertically divided grid")
-                    div(class="centered center aligned one column row")
-                        include ./site-components/subscribe
-                    div(class="centered center aligned one column row")
-                        include ./site-components/contact
+                div(class="ui sticky container")
+                    div(class="ui vertically divided grid")
+                        div(class="centered center aligned one column row")
+                            include ./site-components/subscribe
+                        div(class="centered center aligned one column row")
+                            include ./site-components/contact
