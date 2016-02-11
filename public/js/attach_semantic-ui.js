@@ -1,5 +1,5 @@
 var postPage = 2;
-var host = window.host;
+var host = window.location.host === "localhost:3000" ? window.location.host : window.location.hostname;
 var postUrl = "http://" + host + "/posts?per_page=5";
 $(document)
     .ready(function () {
@@ -77,8 +77,11 @@ $(document)
             var loadPostbtn = $("#load-posts");
             var dimmer = $("#load-posts > .dimmer");
             var url = postUrl + '&page=' + postPage;
-            var match = /(?:category=)(.*)/;
-            var category = window.location.href.match(match)[1];
+            var regex = /(?:category=)(.*)/;
+            var match = window.location.href.match(match);
+            if(match[1]) {
+                var category = match[1];
+            }
             dimmer.addClass("active");
 
             if(category){
@@ -120,7 +123,7 @@ $(document)
             $('.ui.sticky')
                 .sticky({
                     context: '#content',
-                    offset: 75,
+                    offset: 75
                 })
             ;
         }
