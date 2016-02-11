@@ -1,11 +1,11 @@
 var Config = {
     dev: {
         contact: 'jdukes22@gmail.com',
-        server: 'www.jacquesdukes.com'
+        server: 'www.jacquesdukes.com/wordpress/dev'
     },
     prd: {
         contact: 'host@thegenderagenda.com',
-        server: '128.199.152.181'
+        server: '128.199.152.181/html'
     },
 
     getConfig: function () {

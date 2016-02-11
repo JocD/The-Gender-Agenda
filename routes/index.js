@@ -5,7 +5,7 @@ var config = require('./config');
 
 var env = config.getConfig();
 
-var url = 'http://' + env.server + '/wordpress/dev/wp-json/wp/v2/';
+var url = 'http://' + env.server + '/wp-json/wp/v2/';
 
 var appPassword = new Buffer('@Jacques:2B53 mBHn CcHt zkXv').toString('base64');
 
