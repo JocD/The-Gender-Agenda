@@ -14,12 +14,16 @@ var appPassword = new Buffer('@Jacques:2B53 mBHn CcHt zkXv').toString('base64');
 router.use(function (req, res, next) {
     get('categories?exclude=1,51')
         .then(function (val) {
-            val.unshift({
-                name: 'Podcasts',
-                id: 51
-            });
-            res.categories = val;
-            next();
+            for (var i = 0; i < val.length; i++) {
+                var category = val[i];
+                if (category.name === "Podcasts") {
+                    var temp = category;
+                    val.splice(i, 1);
+                    val.unshift(temp);
+                    res.categories = val;
+                    next();
+                }
+            }
         });
 });
 
