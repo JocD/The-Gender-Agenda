@@ -1,5 +1,5 @@
 var postPage = 2;
-var postUrl = "http://localhost:3000/posts?per_page=5&page=";
+var postUrl = "http://localhost:3000/posts?per_page=5";
 $(document)
     .ready(function () {
 
@@ -75,10 +75,18 @@ $(document)
         $("#load-posts").click(function () {
             var loadPostbtn = $("#load-posts");
             var dimmer = $("#load-posts > .dimmer");
+            var url = postUrl + '&page=' + postPage;
+            var match = /(?:category=)(.*)/;
+            var category = window.location.href.match(match)[1];
             dimmer.addClass("active");
+
+            if(category){
+                url += '&category=' + category;
+            }
+
             var posts = Promise.resolve($.ajax({
                     type: 'GET',
-                    url: postUrl + postPage,
+                    url: url,
                     dataType: 'html',
                     encode: true
                 }))
@@ -103,12 +111,16 @@ $(document)
                     loadPostbtn.addClass("disabled");
                     dimmer.removeClass("active");
                 })
-        })
+        });
 
-        $('.ui.sticky')
-            .sticky({
-                context: '#content',
-                offset: 75,
-            })
-        ;
+        var meta = $("#meta").height();
+        var content = $("#post-list").height();
+        if(content >= meta){
+            $('.ui.sticky')
+                .sticky({
+                    context: '#content',
+                    offset: 75,
+                })
+            ;
+        }
     });

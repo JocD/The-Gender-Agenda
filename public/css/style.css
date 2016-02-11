@@ -66,7 +66,7 @@ a {
 }
 
 .ui.stripe {
-    padding-top: 14px;
+    padding-top: 1em;
 }
 
 .icon.circular.soundcloud-padding {
@@ -114,11 +114,11 @@ a {
 
 blockquote {
     font-family: Georgia, serif;
-    font-size: 18px;
+    font-size: 1.25em;
     font-style: italic;
     width: 100%;
     margin: 0.25em 0;
-    padding: 0.25em 40px;
+    padding: 0.25em 3em;
     line-height: 1.45;
     position: relative;
     color: #383838;
@@ -128,29 +128,29 @@ blockquote {
 blockquote:before {
     display: block;
     content: "\201C";
-    font-size: 80px;
+    font-size: 6em;
     position: absolute;
-    left: -10px;
-    top: -20px;
+    left: 1em;
+    top: 2em;
     color: #7a7a7a;
 }
 
 blockquote:after {
     display: block;
     content: "\201C";
-    font-size: 80px;
+    font-size: 6em;
     position: absolute;
-    right: -10px;
-    bottom: -20px;
+    right: -1em;
+    bottom: 2em;
     color: #7a7a7a;
     transform: rotate(180deg);
 }
 
 blockquote cite {
     color: #999999;
-    font-size: 14px;
+    font-size: 1em;
     display: block;
-    margin-top: 5px;
+    margin-top: .5em;
 }
 
 blockquote cite:before {
@@ -224,8 +224,4 @@ blockquote cite:before {
         height: auto !important;
         display: block !important;
     }
-}
-
-#load-posts{
-    position: relative;
 }
