@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
-var recipient = 'jdukes22@gmail.com';
+var config = require('./config');
+
+var env = config.getConfig();
 
 var auth = {
     auth: {
@@ -18,7 +20,7 @@ router.post('/', function (req, res, next) {
     var formData = req.body;
     nodemailerMailgun.sendMail({
             from: formData.name + ' <' + formData.email + '>',
-            to: recipient, // An array if you have multiple recipients.
+            to: env.contact, // An array if you have multiple recipients.
             subject: formData.subject,
             text: formData.message
         })

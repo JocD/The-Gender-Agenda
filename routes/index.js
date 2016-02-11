@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request-promise');
+var config = require('./config');
 
-var server = 'www.jacquesdukes.com';
-var url = 'http://' + server + '/wordpress/dev/wp-json/wp/v2/';
+var env = config.getConfig();
+
+var url = 'http://' + env.server + '/wordpress/dev/wp-json/wp/v2/';
 
 var appPassword = new Buffer('@Jacques:2B53 mBHn CcHt zkXv').toString('base64');
 

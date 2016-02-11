@@ -1,5 +1,6 @@
 var postPage = 2;
-var postUrl = "http://localhost:3000/posts?per_page=5";
+var host = window.host;
+var postUrl = "http://" + host + "/posts?per_page=5";
 $(document)
     .ready(function () {
 
