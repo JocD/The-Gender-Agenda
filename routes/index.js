@@ -12,7 +12,7 @@ var appPassword = new Buffer('@Jacques:2B53 mBHn CcHt zkXv').toString('base64');
 /* GET home page. */
 
 router.use(function (req, res, next) {
-    get('categories?exclude=1,51')
+    get('categories?exclude=1')
         .then(function (val) {
             for (var i = 0; i < val.length; i++) {
                 var category = val[i];
