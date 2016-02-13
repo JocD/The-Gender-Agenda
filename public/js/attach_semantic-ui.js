@@ -1,6 +1,9 @@
 var postPage = 2;
 var host = window.location.host === "localhost:3000" ? window.location.host : window.location.hostname;
 var postUrl = "http://" + host + "/posts?per_page=5";
+var form = $('#contact-form');
+var response = $(".ui.response.message");
+
 $(document)
     .ready(function () {
 
@@ -27,7 +30,7 @@ $(document)
         $('.ui.dropdown')
             .dropdown();
 
-        $('.ui.form')
+        form
             .form({
                 fields: {
                     name: 'empty',
@@ -38,17 +41,13 @@ $(document)
             })
         ;
 
-        $('.ui.form').submit(function (event) {
-            if ($('.ui.form').form('is valid')) {
-                $('.ui.dimmer').addClass('active');
+        form.submit(function (event) {
+            if (form.form('is valid')) {
+                $('form').addClass('loading');
 
-                var formData = {
-                    'name': $('input[name=name]').val(),
-                    'email': $('input[name=email]').val(),
-                    'subject': $('input[name=subject]').val(),
-                    'message': $('textarea[name=message]').val()
-                };
-
+                var formData = form.form('get values', ['name', 'email', 'subject', 'message']);
+                var icon = response.find(".icon");
+                var message = response.find(".message");
                 var contact = Promise.resolve($.ajax({
                         type: 'POST',
                         url: '/contact',
@@ -57,20 +56,33 @@ $(document)
                         encode: true
                     }))
                     .then(function (data) {
-                        $('.submit-success').show();
-                        $('.submit-failure').hide();
+                        icon.removeClass("remove");
+                        icon.addClass("checkmark");
+                        message.text('Message sent successfully');
+                        response.addClass('success');
+                        form.form('clear');
                     })
                     .catch(function (data) {
-                        $('.submit-success').hide();
-                        $('.submit-failure').show();
+                        icon.removeClass("checkmark");
+                        icon.addClass("remove");
+                        message.text('Error sending your message');
+                        response.addClass('error');
                     })
                     .then(function (data) {
-                        $('#contact-form').hide();
-                        $('.contact.response').transition('fade in');
-                        $('.ui.dimmer').removeClass('active');
+                        response.show();
+                        form.hide();
+                        form.removeClass('loading');
                     });
             }
             event.preventDefault();
+        });
+
+        $("#reset-form").on('click', function(){
+            if(form) {
+                form.show();
+                response.hide();
+                response.removeClass('success error');
+            }
         });
 
         $("#load-posts").click(function () {

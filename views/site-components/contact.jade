@@ -2,12 +2,11 @@ div(class="ui padded grid")
     div(class="centered center aligned row")
         h2(class="ui header") CONTACT
     div(class="centered center aligned row")
-        div(class="hidden contact response")
-            i(class="circular big checkmark icon submit-success")
-            i(class="circular big remove icon submit-failure")
-        form(class="ui form", id="contact-form", action="/contact", method="post")
-            div(class="ui inverted dimmer")
-                div(class="ui loader")
+        div(class="hidden ui response message")
+            i(class="circular big icon")
+            p(class="response message")
+            button(id="reset-form", class="ui button") Go Back
+        form(class="ui form", id="contact-form")
             div(class="one fields")
                 div(class="sixteen wide field")
                     label(for="name") Name
