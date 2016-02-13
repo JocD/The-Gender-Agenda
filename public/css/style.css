@@ -130,8 +130,8 @@ blockquote:before {
     content: "\201C";
     font-size: 6em;
     position: absolute;
-    left: 1em;
-    top: 2em;
+    left: -.1em;
+    top: -.2em;
     color: #7a7a7a;
 }
 
@@ -140,8 +140,8 @@ blockquote:after {
     content: "\201C";
     font-size: 6em;
     position: absolute;
-    right: -1em;
-    bottom: 2em;
+    right: -.1em;
+    bottom: -.2em;
     color: #7a7a7a;
     transform: rotate(180deg);
 }

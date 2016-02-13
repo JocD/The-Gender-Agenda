@@ -7,7 +7,7 @@ var env = config.getConfig();
 
 var url = 'http://' + env.server + '/wp-json/wp/v2/';
 
-var appPassword = new Buffer('@Jacques:2B53 mBHn CcHt zkXv').toString('base64');
+var appPassword = new Buffer('@Jacques:' + env.applicationPassword).toString('base64');
 
 /* GET home page. */
 
