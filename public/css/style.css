@@ -229,3 +229,7 @@ blockquote cite:before {
 #load-posts{
     position: relative;
 }
+
+.subheading{
+    font-family: 'Josefin Sans', sans-serif;
+}
