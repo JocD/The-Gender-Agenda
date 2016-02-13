@@ -233,3 +233,14 @@ blockquote cite:before {
 .subheading{
     font-family: 'Josefin Sans', sans-serif;
 }
+
+.initial.lettering:before {
+    display: block;
+    content: "|";
+    font-size: 10em;
+    position: relative;
+    left: -.25em;
+    top: .25em;
+    color: #bc0030;
+    font-family: 'Josefin Sans', serif;
+}
