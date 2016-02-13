@@ -7,8 +7,8 @@ if homepage === true
                     h2(class="subheading") looking at life from a gender perspective in the Jewish community and beyond
 else if post
     div(class="ui stackable one column centered padded grid banner overflow")
-        //div(class="row", style=post.better_featured_image === null ? "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))" : "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(#{post.better_featured_image.source_url}) center center no-repeat")
-        div(class="row", style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))")
+        div(class="row", style=post.better_featured_image === null || post.better_featured_image.source_url === false ? "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))" : "background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(#{post.better_featured_image.source_url}) center center no-repeat")
+        //div(class="row", style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))")
             div(class="eight wide middle aligned left aligned centered column")
                 for category in postCategories
                     if category.name !== 'Podcasts'

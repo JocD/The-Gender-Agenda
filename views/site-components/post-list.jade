@@ -1,11 +1,13 @@
 for post in posts
-    a(class="item", href="/#{post.slug}")
+    a(class="item", href="/post/#{post.slug}")
         div(class="image")
-            //if post.better_featured_image
+            if post.better_featured_image
                 if post.better_featured_image.source_url
                     img(class="ui fluid image", src="#{post.better_featured_image.source_url}")
-            //else
-            img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
+                else
+                    img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
+            else
+                img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
         div(class="content")
             div(class="header")
                 h3(class="ui header") !{post.title.rendered}

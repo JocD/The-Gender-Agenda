@@ -114,7 +114,7 @@ router.get('/about/faq', function (req, res, next) {
     });
 });
 
-router.get('/:slug', function (req, res, next) {
+router.get('/post/:slug', function (req, res, next) {
     var postURL = 'posts?slug=' + req.params.slug;
     get(postURL)
         .then(function (vals) {
