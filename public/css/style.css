@@ -7,6 +7,10 @@ a {
     color: #00B7FF;
 }
 
+ul.ui.list .item:before {
+    content: '';
+}
+
 .banner a {
     color: #ffffff;
 }
