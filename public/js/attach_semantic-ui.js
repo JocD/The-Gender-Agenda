@@ -89,7 +89,7 @@ $(document)
             var loadPostbtn = $("#load-posts");
             var dimmer = $("#load-posts > .dimmer");
             var url = postUrl + '&page=' + postPage;
-            var regex = /(?:category=)(.*)/;
+            var regex = /(?:\/category\/)(.*)/;
             var match = window.location.href.match(match);
             if(match[1]) {
                 var category = match[1];

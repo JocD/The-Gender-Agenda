@@ -4,7 +4,7 @@ div(class="ui vertical inverted sidebar menu right")
         img(src="/img/logo-icon.png", height="100", alt="The Gender Agenda")
     div(class="item") Categories
         for category, i in categories
-            a(href="/?category=#{category.name}", class=i === activeTab ? 'active item' : 'item') #{category.name}
+            a(href="/category/#{category.name}", class=i === activeTab ? 'active item' : 'item') #{category.name}
     //Add About column
     div(class="item") About
         a(href="/about", class="item") Our Story

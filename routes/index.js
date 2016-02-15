@@ -29,7 +29,27 @@ router.use(function (req, res, next) {
 
 router.get('/', function (req, res, next) {
     var postURL = 'posts?per_page=5';
-    var query = req.query.category;
+
+    get(postURL)
+        .then(function (vals) {
+            var posts = vals;
+
+            posts = clean(posts);
+
+            res.render('index', {
+                title: 'The Gender Agenda',
+                logo: 'img/logo.jpg',
+                posts: posts,
+                categories: res.categories,
+                activeTab: -1,
+                homepage: true
+            });
+        });
+});
+
+router.get('/category/:category', function(req,res,next){
+    var postURL = 'posts?per_page=5';
+    var query = req.params.category;
     var activeTab = -1;
 
     if (query) {
@@ -91,7 +111,7 @@ router.get('/about', function (req, res, next) {
         tagline: "The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond. We cover topical issues relating to health,family, career, politics, religion and cultural life from a gender perspective.",
         title: 'Our Story',
         categories: res.categories,
-        activeTab: activeTab,
+        activeTab: activeTab
     });
 });
 
@@ -100,7 +120,7 @@ router.get('/about/hosts', function (req, res, next) {
     res.render('hosts', {
         title: 'People',
         categories: res.categories,
-        activeTab: activeTab,
+        activeTab: activeTab
     });
 });
 
@@ -109,8 +129,7 @@ router.get('/about/faq', function (req, res, next) {
     res.render('faq', {
         title: 'FAQ',
         categories: res.categories,
-        activeTab: activeTab,
-        static: true
+        activeTab: activeTab
     });
 });
 
