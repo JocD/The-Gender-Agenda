@@ -16,7 +16,7 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use('/:name', function(req,res){
+app.use('/:name', function(req,res, next){
   var file = req.params.name;
   if (file === 'robots.txt' || file === 'sitemap.xml') {
     res.sendFile(file, {
@@ -25,6 +25,10 @@ app.use('/:name', function(req,res){
         'Content-Type': 'text/plain'
       }
     });
+  }
+
+  else {
+    next();
   }
 });
 app.use(logger('dev'));
