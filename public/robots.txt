@@ -1,0 +1,6 @@
+Sitemap: http://128.199.152.181/sitemap.xml
+User-agent: *
+Disallow: /html/*
+Disallow: /css/*
+Disallow: /img/*
+Disallow: /js/*

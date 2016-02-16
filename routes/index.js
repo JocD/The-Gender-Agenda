@@ -78,33 +78,6 @@ router.get('/category/:category', function(req,res,next){
         });
 });
 
-router.get('/posts', function (req, res, next) {
-    var postURL = 'posts?per_page=5';
-    var query = req.query.category;
-    var page = req.query.page;
-
-    if (query) {
-        postURL += '&filter[category_name]=' + query;
-    }
-
-    if (page) {
-        postURL += '&page=' + page;
-    }
-
-    get(postURL)
-        .then(function (vals) {
-            var posts = vals;
-
-            posts = clean(posts);
-
-            res.render('site-components/post-list', {
-                title: 'The Gender Agenda',
-                logo: 'img/logo.jpg',
-                posts: posts
-            });
-        });
-});
-
 router.get('/about', function (req, res, next) {
     var activeTab = 6;
     res.render('about', {
@@ -132,6 +105,34 @@ router.get('/about/faq', function (req, res, next) {
         activeTab: activeTab
     });
 });
+
+router.get('/post', function (req, res, next) {
+    var postURL = 'posts?per_page=5';
+    var query = req.query.category;
+    var page = req.query.page;
+
+    if (query) {
+        postURL += '&filter[category_name]=' + query;
+    }
+
+    if (page) {
+        postURL += '&page=' + page;
+    }
+
+    get(postURL)
+        .then(function (vals) {
+            var posts = vals;
+
+            posts = clean(posts);
+
+            res.render('site-components/post-list', {
+                title: 'The Gender Agenda',
+                logo: 'img/logo.jpg',
+                posts: posts
+            });
+        });
+});
+
 
 router.get('/post/:slug', function (req, res, next) {
     var postURL = 'posts?slug=' + req.params.slug;

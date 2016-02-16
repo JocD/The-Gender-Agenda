@@ -1,6 +1,6 @@
 var postPage = 2;
 var host = window.location.host === "localhost:3000" ? window.location.host : window.location.hostname;
-var postUrl = "http://" + host + "/posts?per_page=5";
+var postUrl = "http://" + host + "/post?per_page=5";
 var form = $('#contact-form');
 var response = $(".ui.response.message");
 
