@@ -3,12 +3,14 @@ var host = window.location.host === "localhost:3000" ? window.location.host : wi
 var postUrl = "http://" + host + "/post?per_page=5";
 var form = $('#contact-form');
 var response = $(".ui.response.message");
+var phoneBreakpoint = 768;
+var tabletBreakpoint = 991;
 
 $(document)
     .ready(function () {
 
         // fix menu when passed, but not on mobile screens
-        if (screen.width >= 768) {
+        if (screen.width >= phoneBreakpoint) {
             $('.masthead')
                 .visibility({
                     once: false,
@@ -131,7 +133,7 @@ $(document)
 
         var meta = $("#meta").height();
         var content = $("#post-list").height();
-        if(content >= meta){
+        if(content >= meta && screen.width >= tabletBreakpoint){
             $('.ui.sticky')
                 .sticky({
                     context: '#content',
