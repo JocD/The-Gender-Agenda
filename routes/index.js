@@ -181,7 +181,6 @@ router.get('/post/:slug', function (req, res, next) {
                     res.render('post', {
                         title: post.title.rendered,
                         content: post.content.rendered,
-                        img: featured_img,
                         post: post,
                         categories: res.categories,
                         author: postAuthor,
