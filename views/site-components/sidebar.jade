@@ -1,7 +1,7 @@
 div(class="ui vertical inverted sidebar menu right")
     // Add Logo
     a(class="logo", href="/")
-        img(src="/img/logo-icon.png", height="100", alt="The Gender Agenda")
+        img(src="#{logoIcon.url}",alt="#{logoIcon.alt}", height="100")
     div(class="item") Categories
         for category, i in categories
             a(href="/category/#{category.name}", class=i === activeTab ? 'active item' : 'item') #{category.name}

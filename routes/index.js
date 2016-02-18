@@ -2,6 +2,17 @@ var express = require('express');
 var router = express.Router();
 var request = require('request-promise');
 var config = require('./config');
+var logo = {
+    url: "/img/logo.png",
+    title: "Gender Agenda",
+    alt: "Gender Agenda"
+};
+
+var logoIcon = {
+    url: "/img/logo-icon.png",
+    title: "Gender Agenda",
+    alt: "Gender Agenda"
+};
 
 var env = config.getConfig();
 
@@ -42,7 +53,9 @@ router.get('/', function (req, res, next) {
                 posts: posts,
                 categories: res.categories,
                 activeTab: -1,
-                homepage: true
+                homepage: true,
+                logo: logo,
+                logoIcon: logoIcon
             });
         });
 });
@@ -73,7 +86,9 @@ router.get('/category/:category', function(req,res,next){
                 posts: posts,
                 categories: res.categories,
                 activeTab: activeTab,
-                homepage: true
+                homepage: true,
+                logo: logo,
+                logoIcon: logoIcon
             });
         });
 });
@@ -84,7 +99,9 @@ router.get('/about', function (req, res, next) {
         tagline: "The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond. We cover topical issues relating to health,family, career, politics, religion and cultural life from a gender perspective.",
         title: 'Our Story',
         categories: res.categories,
-        activeTab: activeTab
+        activeTab: activeTab,
+        logo: logo,
+        logoIcon: logoIcon
     });
 });
 
@@ -93,7 +110,9 @@ router.get('/about/hosts', function (req, res, next) {
     res.render('hosts', {
         title: 'People',
         categories: res.categories,
-        activeTab: activeTab
+        activeTab: activeTab,
+        logo: logo,
+        logoIcon: logoIcon
     });
 });
 
@@ -102,7 +121,9 @@ router.get('/about/faq', function (req, res, next) {
     res.render('faq', {
         title: 'FAQ',
         categories: res.categories,
-        activeTab: activeTab
+        activeTab: activeTab,
+        logo: logo,
+        logoIcon: logoIcon
     });
 });
 
@@ -128,7 +149,9 @@ router.get('/post', function (req, res, next) {
             res.render('site-components/post-list', {
                 title: 'The Gender Agenda',
                 logo: 'img/logo.jpg',
-                posts: posts
+                posts: posts,
+                logo: logo,
+                logoIcon: logoIcon
             });
         });
 });
@@ -139,7 +162,6 @@ router.get('/post/:slug', function (req, res, next) {
     get(postURL)
         .then(function (vals) {
             var post = vals[0];
-            var featured_img = post.better_featured_image ? post.better_featured_image.source_url : null;
             var postCategoriesURL = 'categories?post=' + post.id;
             var postTagsURL = 'tags?post=' + post.id;
             var postAuthorURL = 'users/' + post.author;
@@ -165,7 +187,9 @@ router.get('/post/:slug', function (req, res, next) {
                         author: postAuthor,
                         postCategories: postCategories,
                         postTags: postTags,
-                        podcast: postMeta[0]
+                        podcast: postMeta[0],
+                        logo: logo,
+                        logoIcon: logoIcon
                     });
                 });
         });

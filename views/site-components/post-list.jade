@@ -5,9 +5,9 @@ for post in posts
                 if post.better_featured_image.source_url
                     img(class="ui fluid image", src="#{post.better_featured_image.media_details.sizes.thumbnail.source_url}")
                 else
-                    img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
+                    img(class="ui image featured-placeholder manual-center", src="#{logoIcon.url}", alt="#{logoIcon.alt}")
             else
-                img(class="ui image featured-placeholder manual-center", src='/img/logo-icon.png')
+                img(class="ui image featured-placeholder manual-center", src="#{logoIcon.url}", alt="#{logoIcon.alt}")
         div(class="content")
             div(class="header")
                 h3(class="ui header") !{post.title.rendered}

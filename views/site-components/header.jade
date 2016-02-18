@@ -2,14 +2,14 @@ div(class="ui header no margin")
     div(class="ui eight item pointing borderless menu padded grid")
         div(class="mobile only row")
             a(class="item", href="/")
-                img(class="ui image", src="/img/logo.png", width="128", alt="The Gender Agenda")
+                img(class="ui image", src="#{logo.url}", alt="#{logo.alt}", width="128")
             div(class="right menu")
                 a(class="toc item")
                     i(class="sidebar icon")
         div(class="computer tablet only centered row")
             // Add Logo
             a(href="/", class="item")
-                img(class="ui image", src="/img/logo-icon.png", height="32", alt="The Gender Agenda")
+                img(class="ui image", src="#{logoIcon.url}", alt="#{logoIcon.alt}", height="32")
             for category, i in categories
                 a(href="/category/#{category.name}", class=i === activeTab ? 'active item' : 'item') #{category.name}
             //Add About column
