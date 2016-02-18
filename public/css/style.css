@@ -248,3 +248,8 @@ blockquote cite:before {
     color: #bc0030;
     font-family: 'Josefin Sans', serif;
 }
+
+.post img {
+    width: 100%;
+    height: auto;
+}
