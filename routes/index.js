@@ -162,35 +162,38 @@ router.get('/post/:slug', function (req, res, next) {
     get(postURL)
         .then(function (vals) {
             var post = vals[0];
-            var postCategoriesURL = 'categories?post=' + post.id;
-            var postTagsURL = 'tags?post=' + post.id;
-            var postAuthorURL = 'users/' + post.author;
-            var postMetaURL = 'posts/' + post.id + '/meta';
+            if(post) {
+                var postID = post.id;
+                var postCategoriesURL = 'categories?post=' + postID;
+                var postTagsURL = 'tags?post=' + postID;
+                var postAuthorURL = 'users/' + post.author;
+                var postMetaURL = 'posts/' + postID + '/meta';
 
-            var getPostCategories = get(postCategoriesURL);
-            var getPostTags = get(postTagsURL);
-            var getPostAuthor = get(postAuthorURL);
-            var getPostMeta =get(postMetaURL);
+                var getPostCategories = get(postCategoriesURL);
+                var getPostTags = get(postTagsURL);
+                var getPostAuthor = get(postAuthorURL);
+                var getPostMeta = get(postMetaURL);
 
-            Promise.all([getPostCategories, getPostAuthor, getPostTags, getPostMeta])
-                .then(function (vals) {
-                    var postCategories = vals[0];
-                    var postAuthor = vals[1];
-                    var postTags = vals[2];
-                    var postMeta = vals[3];
-                    res.render('post', {
-                        title: post.title.rendered,
-                        content: post.content.rendered,
-                        post: post,
-                        categories: res.categories,
-                        author: postAuthor,
-                        postCategories: postCategories,
-                        postTags: postTags,
-                        podcast: postMeta[0],
-                        logo: logo,
-                        logoIcon: logoIcon
+                Promise.all([getPostCategories, getPostAuthor, getPostTags, getPostMeta])
+                    .then(function (vals) {
+                        var postCategories = vals[0];
+                        var postAuthor = vals[1];
+                        var postTags = vals[2];
+                        var postMeta = vals[3];
+                        res.render('post', {
+                            title: post.title.rendered,
+                            content: post.content.rendered,
+                            post: post,
+                            categories: res.categories,
+                            author: postAuthor,
+                            postCategories: postCategories,
+                            postTags: postTags,
+                            podcast: postMeta[0],
+                            logo: logo,
+                            logoIcon: logoIcon
+                        });
                     });
-                });
+            }
         });
 });
 
