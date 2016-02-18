@@ -89,7 +89,7 @@ ul.ui.list .item:before {
     padding: 0 !important;
 }
 
-#soundcloud-embed{
+#soundcloud-embed {
     height: 175px;
     background-color: #f2f2f2;
 }
@@ -182,8 +182,8 @@ blockquote cite:before {
     width: 720px;
 }
 
-.ui.header{
-   color: #bc0030;
+.ui.header {
+    color: #bc0030;
 }
 
 .ui.header.white {
@@ -223,18 +223,18 @@ blockquote cite:before {
 }
 
 @media only screen and (max-width: 767px) {
-    .ui.items>.item>.image.fluid, .ui.items>.item>.image>img.fluid {
+    .ui.items > .item > .image.fluid, .ui.items > .item > .image > img.fluid {
         width: 100% !important;
         height: auto !important;
         display: block !important;
     }
 }
 
-#load-posts{
+#load-posts {
     position: relative;
 }
 
-.subheading{
+.subheading {
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -252,4 +252,12 @@ blockquote cite:before {
 .post img {
     width: 100%;
     height: auto;
+}
+
+#meta-container {
+    min-height: 850px;
+}
+
+.footer.segment p {
+    opacity: .6;
 }

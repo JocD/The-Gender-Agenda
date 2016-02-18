@@ -14,9 +14,10 @@ html
         div(class="pusher")
             div(class="ui vertical basic masthead center aligned segment no padding")
                 include ./site-components/header
-                include site-components/banner
-            div(class="ui stripe segment no margin")
+                include ./site-components/banner
+            div(class="ui basic segment no margin")
                 block content
+            include ./site-components/footer
         script(src="/js/app.min.js")
         script.
             (function (i, s, o, g, r, a, m) {
