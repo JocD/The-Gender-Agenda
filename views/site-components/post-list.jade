@@ -3,7 +3,7 @@ for post in posts
         div(class="image")
             if post.better_featured_image
                 if post.better_featured_image.source_url
-                    img(class="ui fluid image", src="#{post.better_featured_image.media_details.sizes.thumbnail.source_url}")
+                    img(class="ui fluid image", src="#{post.better_featured_image.media_details.sizes.thumbnail.source_url}", alt="#{post.better_featured_image.alt_text}")
                 else
                     img(class="ui image featured-placeholder manual-center", src="#{logoIcon.url}", alt="#{logoIcon.alt}")
             else
