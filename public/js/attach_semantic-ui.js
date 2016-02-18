@@ -93,7 +93,7 @@ $(document)
             var url = postUrl + '&page=' + postPage;
             var regex = /(?:\/category\/)(.*)/;
             var match = window.location.href.match(regex);
-            if(match[1]) {
+            if(!!match && match[1]) {
                 var category = match[1];
             }
             dimmer.addClass("active");
