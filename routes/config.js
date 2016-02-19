@@ -6,7 +6,7 @@ var Config = {
     },
     prd: {
         contact: 'host@thegenderagenda.com',
-        server: '128.199.152.181/html',
+        server: '128.199.152.181/wordpress',
         applicationPassword: 'OJZJ f6vU mQeq pgRu'
     },
 
