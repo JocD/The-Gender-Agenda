@@ -176,10 +176,11 @@ router.get('/post/:slug', function (req, res, next) {
 
                 Promise.all([getPostCategories, getPostAuthor, getPostTags, getPostMeta])
                     .then(function (vals) {
+                        var regex = /url=\"(.*?)\"/;
                         var postCategories = vals[0];
                         var postAuthor = vals[1];
                         var postTags = vals[2];
-                        var postMeta = vals[3];
+                        var postMeta = (vals[3].match(regex))[0];
                         res.render('post', {
                             title: post.title.rendered,
                             content: post.content.rendered,
