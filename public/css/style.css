@@ -222,14 +222,6 @@ blockquote cite:before {
     display: none;
 }
 
-@media only screen and (max-width: 767px) {
-    .ui.items > .item > .image.fluid, .ui.items > .item > .image > img.fluid {
-        width: 100% !important;
-        height: auto !important;
-        display: block !important;
-    }
-}
-
 #load-posts {
     position: relative;
 }
@@ -268,7 +260,7 @@ div.aligncenter {
 }
 
 .alignright {
-    float:right;
+    float: right;
     margin: 5px 0 20px 20px;
 }
 
@@ -295,4 +287,30 @@ a img.aligncenter {
     display: block;
     margin-left: auto;
     margin-right: auto
+}
+
+@media only screen and (max-width: 768px) {
+    .ui.items > .item > .image.fluid, .ui.items > .item > .image > img.fluid {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    .no.padding {
+        padding: 0 !important;
+    }
+
+    .no.margin {
+        margin: 0 !important;
+    }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+    #meta {
+        max-width: 153px !important;
+    }
+
+    #meta > .ui.grid {
+        width: 100%;
+    }
 }
