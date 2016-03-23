@@ -161,7 +161,7 @@ blockquote cite:before {
     content: "\2014 \2009";
 }
 
-.post blockquote, .post img {
+.post blockquote {
     left: 50%;
     transform: translateX(-50%);
     position: relative;
