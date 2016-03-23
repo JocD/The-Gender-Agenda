@@ -340,11 +340,15 @@ a img.aligncenter {
         display: block !important;
     }
 
-    .no.padding {
+    .ui.grid.banner {
+        height: auto;
+    }
+
+    .no.padding, #soundcloud-embed {
         padding: 0 !important;
     }
 
-    .no.margin {
+    .no.margin, #soundcloud-embed {
         margin: 0 !important;
     }
 }
