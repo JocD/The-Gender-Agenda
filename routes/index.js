@@ -180,8 +180,9 @@ router.get('/post/:slug', function (req, res, next) {
             var postCategories = vals[0];
             var postAuthor = vals[1];
             var postTags = vals[2];
-            if (vals[3][0]) {
-              var postMeta = (vals[3][0].match(regex))[0];
+            var postMeta = vals[3][0];
+            if (postMeta) {
+              postMeta = (postMeta.value.match(regex))[1];
             }
             res.render('post', {
               title: post.title.rendered,
