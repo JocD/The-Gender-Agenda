@@ -289,7 +289,7 @@ a img.aligncenter {
     margin-right: auto
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     .ui.items > .item > .image.fluid, .ui.items > .item > .image > img.fluid {
         width: 100% !important;
         height: auto !important;
@@ -306,15 +306,5 @@ a img.aligncenter {
 
     .no.margin, #soundcloud-embed {
         margin: 0 !important;
-    }
-}
-
-@media only screen and (min-width: 321px) and (max-width: 768px) {
-    #meta {
-        max-width: 153px !important;
-    }
-
-    #meta > .ui.grid {
-        width: 100%;
     }
 }
