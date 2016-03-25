@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="14"
+   height="14"
+   viewBox="0 0 14 14"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   inkscape:export-filename="C:\Users\jduke\Documents\Programming\gender-agenda\public\img\stitcher.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="stitcher.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="13.976007"
+     inkscape:cx="15.957583"
+     inkscape:cy="18.460069"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4167"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1368"
+     inkscape:window-height="849"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1038.3621)">
+    <g
+       id="g4167"
+       transform="matrix(0.02978723,0,0,0.02978723,9.3201083e-7,1028.5279)"
+       style="fill:#00b7ff;fill-opacity:0.94117647">
+      <rect
+         ry="0"
+         rx="0"
+         y="490.14758"
+         x="1.2078444e-006"
+         height="150"
+         width="50.357151"
+         id="rect4138"
+         style="fill:#00b7ff;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         style="fill:#00b7ff;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4159"
+         width="100.7143"
+         height="150"
+         x="67.142838"
+         y="490.14758"
+         rx="0"
+         ry="0" />
+      <rect
+         ry="0"
+         rx="0"
+         y="490.14679"
+         x="184.64285"
+         height="150"
+         width="151.07144"
+         id="rect4161"
+         style="fill:#00b7ff;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+      <rect
+         style="fill:#00b7ff;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4163"
+         width="16.785717"
+         height="239"
+         x="344.10715"
+         y="445.64758"
+         rx="0"
+         ry="0" />
+      <rect
+         ry="0"
+         rx="0"
+         y="490.14758"
+         x="369.28574"
+         height="150"
+         width="100.7143"
+         id="rect4165"
+         style="fill:#00b7ff;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

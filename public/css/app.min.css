@@ -70,6 +70,10 @@ ul.ui.list .item:before {
     display: inline-block;
 }
 
+.item.border{
+    border: thin white solid;
+}
+
 .ui.menu .dropdown.item .menu a:hover {
     color: #ffffff;
 }
@@ -331,6 +335,11 @@ a img.aligncenter {
     display: block;
     margin-left: auto;
     margin-right: auto
+}
+
+.icon.stitcher {
+    background: url('../img/stitcher.svg') no-repeat center center;
+    background-size: 1.5em;
 }
 
 @media only screen and (max-width: 767px) {

@@ -11,7 +11,10 @@ div(class="ui header no margin")
             a(href="/", class="item")
                 img(class="ui image", src="#{logoIcon.url}", alt="#{logoIcon.alt}", height="32")
             for category, i in categories
-                a(href="/category/#{category.name}", class=i === activeTab ? 'active item' : 'item') #{category.name}
+                if category.name === 'Podcasts'
+                    a(href="/category/#{category.name}", class=i === activeTab ? 'active item border' : 'item border') #{category.name}
+                else
+                    a(href="/category/#{category.name}", class=i === activeTab ? 'active item ' : 'item') #{category.name}
             //Add About column
             div(class="ui dropdown item") About
                 i(class="dropdown icon")
