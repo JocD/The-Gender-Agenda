@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        title !{title}
+        meta(name="description", content="The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond.  We cover topical issues relating to health, family, career, politics, religion and cultural life from a gender perspective")
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+        link(rel="icon", href="/favicon.ico", type="image/x-icon")
+        link(rel='stylesheet', href='/css/app.min.css', type='text/css')
+    body(class="pushable")
+        include ./site-components/floating-header-bar
+        include ./site-components/sidebar
+        div(class="pusher")
+            div(class="ui vertical basic masthead center aligned segment no padding")
+                include ./site-components/header
+            div(class="ui basic segment no margin error")
+                block content
+        script(src="/js/app.min.js")
+        script.
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-71513634-2', 'auto');
+            ga('send', 'pageview');

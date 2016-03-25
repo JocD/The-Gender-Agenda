@@ -5,6 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('./routes/config');
+var helpers = require('./routes/helpers');
+var logo = config.logo;
+var logoIcon = config.logoIcon;
+
 var routes = require('./routes/index');
 var contact = require('./routes/contact');
 
@@ -41,6 +46,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/contact', contact);
 
+app.use(function (req, res, next) {
+  helpers.categories()
+    .then(function (val){
+      res.categories = val;
+      next();
+    })
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -56,8 +69,11 @@ if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
-      message: err.message,
-      error: err
+      title: err.message,
+      error: err,
+      logo: logo,
+      categories: res.categories,
+      logoIcon: logoIcon
     });
   });
 }
@@ -67,8 +83,11 @@ if (app.get('env') === 'development') {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
-    message: err.message,
-    error: {}
+    title: err.message,
+    error: {},
+    categories: res.categories,
+    logo: logo,
+    logoIcon: logoIcon
   });
 });
 

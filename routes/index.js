@@ -1,41 +1,21 @@
 var express = require('express');
 var router = express.Router();
-var request = require('request-promise');
 var config = require('./config');
-var logo = {
-  url: "/img/logo.png",
-  title: "Gender Agenda",
-  alt: "Gender Agenda"
-};
+var helpers = require('./helpers');
+var logo = config.logo;
+var logoIcon = config.logoIcon;
 
-var logoIcon = {
-  url: "/img/logo-icon.png",
-  title: "Gender Agenda",
-  alt: "Gender Agenda"
-};
-
-var env = config.getConfig();
-
-var url = 'http://' + env.server + '/wp-json/wp/v2/';
-
-var appPassword = new Buffer('@Jacques:' + env.applicationPassword).toString('base64');
+var get = helpers.get;
+var clean = helpers.clean;
 
 /* GET home page. */
 
 router.use(function (req, res, next) {
-  get('categories?exclude=1')
-    .then(function (val) {
-      for (var i = 0; i < val.length; i++) {
-        var category = val[i];
-        if (category.name === "Podcasts") {
-          var temp = category;
-          val.splice(i, 1);
-          val.unshift(temp);
-          res.categories = val;
-          next();
-        }
-      }
-    });
+  helpers.categories()
+    .then(function (val){
+      res.categories = val;
+      next();
+    })
 });
 
 router.get('/', function (req, res, next) {
@@ -49,7 +29,6 @@ router.get('/', function (req, res, next) {
 
       res.render('index', {
         title: 'The Gender Agenda',
-        logo: 'img/logo.jpg',
         posts: posts,
         categories: res.categories,
         activeTab: -1,
@@ -82,7 +61,6 @@ router.get('/category/:category', function (req, res, next) {
 
       res.render('index', {
         title: 'The Gender Agenda',
-        logo: 'img/logo.jpg',
         posts: posts,
         categories: res.categories,
         activeTab: activeTab,
@@ -148,7 +126,6 @@ router.get('/post', function (req, res, next) {
 
       res.render('site-components/post-list', {
         title: 'The Gender Agenda',
-        logo: 'img/logo.jpg',
         posts: posts,
         logo: logo,
         logoIcon: logoIcon
@@ -200,31 +177,5 @@ router.get('/post/:slug', function (req, res, next) {
       }
     });
 });
-
-
-function get(path) {
-  options = {
-    uri: url + path,
-    json: true,
-    headers: {
-      Authorization: 'Basic ' + appPassword
-    }
-  };
-
-  return request(options)
-    .then(function (val) {
-      return val;
-    })
-    .catch('Error grabbing post data from ' + url + path);
-}
-
-function clean(posts) {
-  for (var i = 0; i < posts.length; i++) {
-    var post = posts[i];
-    post.excerpt.rendered = post.excerpt.rendered.replace(/\<(?=a).*(?:a\>)/g, '');
-    post.date = new Date(post.date).toLocaleDateString();
-  }
-  return posts;
-}
 
 module.exports = router;

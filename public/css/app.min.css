@@ -342,6 +342,22 @@ a img.aligncenter {
     background-size: 1.5em;
 }
 
+.design.info{
+    opacity: .3;
+}
+
+.ui.segment.error{
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    left: 50%;
+}
+
+.ui.segment.error *
+{
+    color: #bc0030;
+}
+
 @media only screen and (max-width: 767px) {
     .ui.items > .item > .image.fluid, .ui.items > .item > .image > img.fluid {
         width: 100% !important;
