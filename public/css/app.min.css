@@ -337,6 +337,17 @@ a img.aligncenter {
     margin-right: auto
 }
 
+.post img {
+    max-width: 100% !important;
+    max-height: 50vh !important;
+    height: auto !important;
+    width: auto !important;
+}
+
+.post iframe {
+    width: 100% !important;
+}
+
 .icon.stitcher {
     background: url('../img/stitcher.svg') no-repeat center center;
     background-size: 1.5em;
