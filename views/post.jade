@@ -5,5 +5,6 @@ block content
         //Posts
         div(class="eight wide column post")
             div !{content}
-            for tag in postTags
-                p(class="post tag ui red tag label") #{tag.name}
+            if postTags
+                for tag in postTags
+                    p(class="post tag ui red tag label") #{tag.name}

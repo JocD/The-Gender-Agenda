@@ -186,6 +186,10 @@ blockquote cite:before {
     width: 720px;
 }
 
+.image {
+    overflow: hidden;
+}
+
 .ui.header {
     color: #bc0030;
 }

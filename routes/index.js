@@ -12,7 +12,7 @@ var clean = helpers.clean;
 
 router.use(function (req, res, next) {
   helpers.categories()
-    .then(function (val){
+    .then(function (val) {
       res.categories = val;
       next();
     })
@@ -71,38 +71,25 @@ router.get('/category/:category', function (req, res, next) {
     });
 });
 
-router.get('/about', function (req, res, next) {
+router.get('/about/:page', function (req, res, next) {
   var activeTab = 6;
-  res.render('about', {
-    tagline: "The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond. We cover topical issues relating to health,family, career, politics, religion and cultural life from a gender perspective.",
-    title: 'Our Story',
-    categories: res.categories,
-    activeTab: activeTab,
-    logo: logo,
-    logoIcon: logoIcon
-  });
-});
-
-router.get('/about/hosts', function (req, res, next) {
-  var activeTab = 6;
-  res.render('hosts', {
-    title: 'People',
-    categories: res.categories,
-    activeTab: activeTab,
-    logo: logo,
-    logoIcon: logoIcon
-  });
-});
-
-router.get('/about/faq', function (req, res, next) {
-  var activeTab = 6;
-  res.render('faq', {
-    title: 'FAQ',
-    categories: res.categories,
-    activeTab: activeTab,
-    logo: logo,
-    logoIcon: logoIcon
-  });
+  var query = req.params.page;
+  var postURL = 'pages?slug=' + query;
+  get(postURL)
+    .then(function (vals) {
+      var page = vals[0];
+      var title = page.title.rendered;
+      var content = page.content.rendered;
+      res.render('post', {
+        tagline: "The Gender Agenda is a radio show and podcast that examines the gender dimension aspects of Jewish life in Australia and beyond. We cover topical issues relating to health,family, career, politics, religion and cultural life from a gender perspective.",
+        title: title,
+        content: content,
+        categories: res.categories,
+        activeTab: activeTab,
+        logo: logo,
+        logoIcon: logoIcon
+      })
+    });
 });
 
 router.get('/post', function (req, res, next) {
