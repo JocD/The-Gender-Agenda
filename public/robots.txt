@@ -1,4 +1,4 @@
-Sitemap: http://128.199.152.181/sitemap.xml
+Sitemap: http://www.thegenderagenda.com/sitemap.xml
 User-agent: *
 Disallow: /html/*
 Disallow: /css/*
