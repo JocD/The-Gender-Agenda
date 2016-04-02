@@ -81,6 +81,9 @@ $(document)
 
         $("#reset-form").on('click', function(){
             if(form) {
+                var submitBtn = $("#submit");
+                submitBtn.val("Submit");
+
                 form.show();
                 response.hide();
                 response.removeClass('success error');
