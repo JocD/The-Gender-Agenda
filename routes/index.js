@@ -8,9 +8,17 @@ var logoIcon = config.logoIcon;
 var get = helpers.get;
 var clean = helpers.clean;
 
-/* GET home page. */
+router.use(function (req, res, next) {
+  var taglineURL = 'site-meta';
+  get(taglineURL)
+    .then(function (vals) {
+      res.tagline = vals.description;
+      next();
+    })
+});
 
 router.use(function (req, res, next) {
+
   helpers.categories()
     .then(function (val) {
       res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -23,7 +31,6 @@ router.use(function (req, res, next) {
 
 router.get('/', function (req, res, next) {
   var postURL = 'posts?per_page=5';
-
   get(postURL)
     .then(function (vals) {
       var posts = vals;
@@ -33,6 +40,7 @@ router.get('/', function (req, res, next) {
       res.render('index', {
         title: 'The Gender Agenda',
         posts: posts,
+        tagline: res.tagline,
         categories: res.categories,
         activeTab: -1,
         homepage: true,

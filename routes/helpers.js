@@ -1,10 +1,19 @@
 var config = require('./config');
 var request = require('request-promise');
 var env = config.getConfig();
-var url = 'http://' + env.server + '/wp-json/wp/v2/';
+var url = '';
 var appPassword = new Buffer('@Jacques:' + env.applicationPassword).toString('base64');
 
 function get(path) {
+  if(path === 'site-meta'){
+    url = 'http://' + env.server + '/wp-json/';
+    path = '';
+  }
+
+  else {
+    url = 'http://' + env.server + '/wp-json/wp/v2/';
+  }
+  
   options = {
     uri: url + path,
     json: true,
